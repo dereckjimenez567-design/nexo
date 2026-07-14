@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jardinero de Pasión · Diseño y mantenimiento de jardines</title>
+<meta name="description" content="Diseño, mantenimiento, poda y riego de jardines en el Gran Área Metropolitana de Costa Rica. Jardines pensados para vivirse todo el año.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Paleta derivada del logo: verde bosque + dorado/crema */
+  --ink:#0B1712;          /* casi negro verdoso */
+  --brand:#14432E;        /* verde del logo (fondos oscuros) */
+  --brand-d:#0F3324;
+  --accent:#C6AC7C;       /* dorado */
+  --accent-l:#E4D3A6;     /* crema del logotipo */
+  --ivory:#F7F4EC;        /* fondo claro */
+  --surface:#EFEADD;      /* segunda superficie */
+  --muted:#8A9B8E;        /* texto tenue */
+  --taupe:#46554B;        /* cuerpo sobre claro */
+  --line:rgba(11,23,18,.14);
+  --line-g:rgba(198,172,124,.30);
+  --ease:cubic-bezier(.19,1,.22,1);
+  --serif:"Marcellus","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:"Montserrat","Helvetica Neue","Segoe UI",system-ui,Arial,sans-serif;
+
+  --step--1:clamp(.8rem, .76rem + .2vw, .9rem);
+  --step-0:clamp(1rem, .94rem + .3vw, 1.15rem);
+  --step-1:clamp(1.2rem, 1.1rem + .5vw, 1.5rem);
+  --step-2:clamp(1.5rem, 1.3rem + .9vw, 2rem);
+  --step-3:clamp(1.9rem, 1.6rem + 1.5vw, 2.8rem);
+  --step-4:clamp(2.4rem, 1.9rem + 2.4vw, 3.6rem);
+  --step-5:clamp(2.9rem, 2.1rem + 3.6vw, 4.8rem);
+  --step-6:clamp(3.4rem, 2.2rem + 5.6vw, 6.4rem);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.7;font-weight:400;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:var(--serif);font-weight:400;line-height:1.14;letter-spacing:.008em;text-wrap:balance}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+.label{font-size:.7rem;font-weight:600;letter-spacing:.34em;text-transform:uppercase;color:var(--accent)}
+.rule{width:56px;height:1px;background:var(--accent);border:0;margin:22px 0}
+.btn{display:inline-flex;align-items:center;gap:.7em;font:600 .76rem var(--sans);letter-spacing:.2em;
+  text-transform:uppercase;padding:17px 34px;border:1px solid var(--accent);background:var(--accent);color:var(--ink);
+  cursor:pointer;transition:background .45s var(--ease),color .45s var(--ease)}
+.btn:hover{background:transparent;color:var(--brand)}
+.btn--dark{background:transparent;color:var(--accent)}
+.btn--dark:hover{background:var(--accent);color:var(--ink)}
+.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:.65em;background:#25D366;color:#0A1F14;
+  font:600 .78rem var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:16px 30px;border:0;border-radius:3px;
+  cursor:pointer;transition:background .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease);
+  box-shadow:0 6px 20px rgba(37,211,102,.22)}
+.btn-wa:hover{background:#1EBE57;transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,.3)}
+.btn-wa svg{width:21px;height:21px;flex:none}
+/* Botón flotante de WhatsApp */
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:120;width:60px;height:60px;border-radius:50%;
+  background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(11,23,18,.3);
+  transition:transform .3s var(--ease),box-shadow .4s var(--ease)}
+.wa-float svg{width:33px;height:33px}
+.wa-float:hover{transform:scale(1.06);box-shadow:0 12px 30px rgba(37,211,102,.45)}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:#25D366;z-index:-1;
+  animation:waPulse 2.6s var(--ease) infinite}
+@keyframes waPulse{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.55);opacity:0}100%{opacity:0}}
+.wa-float .tip{position:absolute;right:72px;top:50%;transform:translateY(-50%) translateX(8px);
+  background:var(--ink);color:var(--ivory);font:600 .74rem var(--sans);letter-spacing:.04em;white-space:nowrap;
+  padding:9px 14px;border-radius:4px;opacity:0;pointer-events:none;
+  transition:opacity .35s var(--ease),transform .35s var(--ease)}
+.wa-float .tip::after{content:"";position:absolute;right:-5px;top:50%;transform:translateY(-50%);
+  border:5px solid transparent;border-left-color:var(--ink);border-right:0}
+.wa-float:hover .tip,.wa-float:focus-visible .tip{opacity:1;transform:translateY(-50%) translateX(0)}
+@media(max-width:560px){.wa-float{right:16px;bottom:16px;width:56px;height:56px}.wa-float svg{width:30px;height:30px}}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+section.pad{padding:clamp(6rem,12vw,10rem) 0}
+
+/* ---------- Loader ---------- */
+#loader{position:fixed;inset:0;z-index:200;background:#054233;display:grid;place-items:center;padding:24px;
+  animation:loadOut .8s var(--ease) 2.1s forwards}
+#loader .loader-logo{width:min(66vw,340px);height:auto;opacity:0;transform:scale(.94);
+  animation:logoIn 1s var(--ease) .2s forwards}
+@keyframes logoIn{to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes up{to{transform:none}}
+@keyframes loadOut{to{opacity:0;visibility:hidden}}
+
+/* ---------- Nav ---------- */
+header{position:fixed;inset:0 0 auto;z-index:90;transition:background .5s var(--ease),border-color .5s var(--ease);border-bottom:1px solid transparent}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:88px}
+header.solid{background:rgba(247,244,236,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:13px;color:var(--ivory);transition:color .5s}
+header.solid .brand{color:var(--brand)}
+.brand .bm{width:34px;height:34px;flex:none}
+.brand .bt{font-family:var(--serif);font-size:1.16rem;letter-spacing:.02em;line-height:1}
+.brand .bt small{display:block;font-family:var(--sans);font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:38px;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);align-items:center}
+header.solid .navlinks{color:var(--brand)}
+.navlinks a{position:relative;padding:6px 0}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--accent);transition:width .4s var(--ease)}
+.navlinks a:hover::after{width:100%}
+.nav-cta{border:1px solid currentColor;padding:11px 22px !important;transition:background .4s var(--ease),color .4s var(--ease),border-color .4s}
+.nav-cta:hover{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.nav-cta::after{display:none}
+.burger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;background:none;border:0;cursor:pointer;padding:8px;min-width:44px;min-height:44px;margin-right:-8px}
+.burger span{width:26px;height:2px;background:currentColor;transition:.4s var(--ease)}
+.brand.solid,header.solid .burger{color:var(--brand)}
+
+/* ---------- Hero ---------- */
+.hero{min-height:100vh;min-height:100dvh;background:var(--ink);color:var(--ivory);position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bggrad{position:absolute;inset:0;background:radial-gradient(120% 90% at 82% 0%,rgba(198,172,124,.18),transparent 55%),linear-gradient(180deg,rgba(20,67,46,.55),var(--ink) 80%)}
+.hero .grain{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-in{position:relative;width:100%;padding:150px 32px 66px}
+.hero h1{font-size:var(--step-6);font-weight:400;color:var(--ivory);margin-top:24px;max-width:24ch}
+.hero h1 em{font-style:normal;color:var(--accent-l)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(115%);animation:up 1.1s var(--ease) forwards}
+.hero h1 .ln:nth-child(1) i{animation-delay:2.35s}
+.hero h1 .ln:nth-child(2) i{animation-delay:2.5s}
+.hero h1 .ln:nth-child(3) i{animation-delay:2.65s}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-top:52px;
+  opacity:0;animation:fadeUp 1s var(--ease) 2.9s forwards}
+.hero-foot p{max-width:44ch;color:rgba(247,244,236,.8);font-weight:300}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-size:.62rem;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(247,244,236,.5);opacity:0;animation:fadeUp 1s var(--ease) 3.3s forwards}
+
+/* ---------- Zonas marquee ---------- */
+.clients{background:var(--brand);color:var(--ivory);border-block:1px solid var(--line-g);overflow:hidden;padding-top:14px}
+.clients .lbl{text-align:center;padding-top:26px;color:rgba(247,244,236,.6);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase}
+.marquee{overflow:hidden;padding:20px 0 40px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.mtrack{display:inline-flex;gap:64px;white-space:nowrap;animation:scroll 38s linear infinite;
+  font-family:var(--serif);font-size:1.45rem;color:rgba(247,244,236,.84);align-items:center}
+.mtrack span.dot{color:var(--accent)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- Manifesto ---------- */
+.manifesto{padding:clamp(6rem,12vw,10rem) 0}
+.manifesto .in{max-width:980px;margin:0 auto;text-align:center}
+.manifesto h2{font-size:clamp(1.7rem,3.6vw,2.8rem);line-height:1.35;margin-top:22px}
+.manifesto h2 .mut{color:var(--muted)}
+.manifesto .sign{margin-top:36px;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent)}
+
+/* ---------- Servicios ---------- */
+.head-2{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.head-2 h2{font-size:var(--step-4)}
+.head-2 p{max-width:38ch;color:var(--taupe);font-weight:300}
+.svc-list{margin-top:60px;border-top:1px solid var(--line)}
+.svc-row{display:grid;grid-template-columns:80px 1fr 1.1fr auto;gap:28px;align-items:center;padding:36px 8px;
+  border-bottom:1px solid var(--line);transition:padding .5s var(--ease),background .5s var(--ease)}
+.svc-row:hover{padding-inline:26px;background:var(--surface)}
+.svc-row .no{font-family:var(--serif);color:var(--accent);letter-spacing:.1em;font-size:1.05rem}
+.svc-row h3{font-size:clamp(1.4rem,3vw,2rem)}
+.svc-row .d{max-width:48ch;color:var(--taupe);font-weight:300}
+.svc-row .ar{color:var(--brand);transition:transform .5s var(--ease);justify-self:end}
+.svc-row:hover .ar{transform:translateX(10px);color:var(--accent)}
+@media(max-width:820px){.svc-row{grid-template-columns:44px 1fr;gap:14px 18px}.svc-row .d{grid-column:2}.svc-row .ar{display:none}}
+
+/* ---------- Galería ---------- */
+.gal{background:var(--surface)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.gcard{position:relative;background:var(--brand);overflow:hidden;cursor:pointer;
+  display:block;width:100%;padding:0;border:1px solid var(--line-g);text-align:left;color:inherit;font:inherit}
+.gcard .thumb{aspect-ratio:3/4;overflow:hidden}
+.gcard .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.gcard:hover .thumb img{transform:scale(1.06)}
+.gcard .veil{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;
+  background:linear-gradient(to top,rgba(11,23,18,.9),rgba(11,23,18,0) 55%);opacity:1;transition:opacity .5s var(--ease)}
+.gcard .cat{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-l);margin-bottom:6px}
+.gcard .ct{font-family:var(--serif);font-size:1.08rem;color:var(--ivory);line-height:1.2}
+/* En escritorio con cursor el texto se atenúa hasta el hover; en táctil siempre visible */
+@media(hover:hover) and (min-width:621px){
+  .gcard .veil{opacity:.6}
+  .gcard:hover .veil,.gcard:focus-visible .veil{opacity:1}
+}
+@media(max-width:900px){.gal-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:620px){.gal-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.gal-note{margin-top:34px;font-size:.8rem;color:var(--taupe);font-weight:300;text-align:center}
+
+/* Lightbox */
+#lb{position:fixed;inset:0;z-index:150;background:rgba(11,23,18,.92);backdrop-filter:blur(8px);
+  display:none;place-items:center;padding:24px}
+#lb.on{display:grid}
+#lb .card{width:min(920px,94vw);max-height:92vh;display:flex;flex-direction:column;
+  background:var(--ink);border:1px solid var(--accent);position:relative;overflow:hidden}
+#lb .thumb{flex:0 1 auto;min-height:0;overflow:hidden;background:var(--brand);position:relative;
+  display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+#lb .thumb img{max-width:100%;max-height:66vh;width:auto;height:auto;display:block;transition:transform .25s var(--ease)}
+#lb .thumb.zoomed{cursor:zoom-out}
+#lb .thumb.zoomed img{transform:scale(2.3)}
+#lb .thumb::after{content:"⤢ Clic para acercar";position:absolute;left:14px;bottom:14px;
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);
+  background:rgba(11,23,18,.55);border:1px solid var(--line-g);padding:6px 11px;pointer-events:none;transition:opacity .3s}
+#lb .thumb.zoomed::after{opacity:0}
+#lb .info{flex:0 0 auto;padding:20px 28px}
+#lb .cat{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+#lb h3{color:var(--ivory);font-size:1.5rem}
+#lb p{color:rgba(247,244,236,.78);font-weight:300;margin-top:12px}
+#lb .x{position:absolute;top:14px;right:16px;z-index:3;background:rgba(11,23,18,.5);border:1px solid var(--line-g);color:var(--ivory);
+  width:40px;height:40px;cursor:pointer;font-size:1.1rem;line-height:1}
+@media(max-width:560px){#lb .thumb::after{content:"Toca para acercar"}#lb .card{max-height:88vh}}
+
+/* ---------- Impact ---------- */
+.impact{background:var(--ink);color:var(--ivory)}
+.impact-in{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;padding:100px 0}
+.impact .n{font-family:var(--serif);font-size:clamp(2.6rem,5vw,4rem);color:var(--accent);line-height:1}
+.impact .t{margin-top:12px;font-size:.76rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,244,236,.72)}
+@media(max-width:760px){.impact-in{grid-template-columns:1fr 1fr;gap:48px}}
+
+/* ---------- Proceso ---------- */
+.proc{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:60px;background:var(--line)}
+.step{background:var(--ivory);padding:42px 30px}
+.step .st-n{font-family:var(--serif);color:var(--accent);letter-spacing:.2em;font-size:1.05rem}
+.step h3{font-size:1.35rem;margin:14px 0 10px}.step p{color:var(--taupe);font-weight:300;font-size:.96rem}
+@media(max-width:820px){.proc{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.proc{grid-template-columns:1fr}}
+
+/* ---------- Testimonio ---------- */
+.quote-band{background:var(--brand);color:var(--ivory);text-align:center}
+.quote-band .in{max-width:840px;margin:0 auto;padding:clamp(5rem,10vw,7.5rem) 32px}
+.quote-band .stars{color:var(--accent);letter-spacing:.34em;margin-bottom:26px}
+.quote-band blockquote{font-family:var(--serif);font-style:normal;font-size:clamp(1.5rem,3.4vw,2.3rem);line-height:1.5}
+.quote-band .who{margin-top:28px;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
+
+/* ---------- Contacto ---------- */
+.contact-in{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:56px}
+.cinfo .lead{font-family:var(--serif);font-size:1.4rem;line-height:1.4;margin-bottom:26px}
+.cinfo .row{display:flex;gap:18px;padding:18px 0;border-top:1px solid var(--line);align-items:center}
+.cinfo .row:last-child{border-bottom:1px solid var(--line)}
+.cinfo .k{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);width:110px;flex:none}
+.cinfo .v{font-weight:300}
+.cinfo .v a:hover{color:var(--brand)}
+.form label{display:block;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--brand);margin:22px 0 8px}
+.form input,.form textarea,.form select{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;
+  padding:11px 2px;font:inherit;color:var(--ink)}
+.form input:focus,.form textarea:focus,.form select:focus{outline:0;border-bottom-color:var(--accent)}
+.form .btn{margin-top:34px;border:0}
+@media(max-width:820px){.contact-in{grid-template-columns:1fr;gap:44px}}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:rgba(247,244,236,.72);padding:96px 0 34px}
+.foot-cta{text-align:center;padding-bottom:78px;border-bottom:1px solid var(--line-g)}
+.foot-cta h2{font-size:clamp(2.4rem,6vw,4.6rem);color:var(--ivory)}
+.foot-cta h2 em{font-style:normal;color:var(--accent-l)}
+.foot-cta .btn{margin-top:34px}
+.foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding:60px 0 44px}
+.foot-top .fbrand .bt{font-family:var(--serif);font-size:1.3rem;color:var(--ivory)}
+.foot-top .fbrand .foot-logo{width:210px;max-width:70%;height:auto;display:block;border:1px solid var(--line-g);border-radius:3px}
+.foot-top p{max-width:34ch;font-weight:300;margin-top:16px;font-size:.92rem}
+.foot-top h4{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.foot-top ul{list-style:none}.foot-top li{margin:10px 0;font-weight:300}
+.foot-top a:hover{color:var(--accent)}
+.foot-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:28px;padding-top:22px;
+  border-top:1px solid rgba(198,172,124,.18);font-size:.76rem;color:rgba(247,244,236,.5)}
+@media(max-width:760px){.foot-top{grid-template-columns:1fr 1fr}}
+
+/* ---------- Reveal ---------- */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- Mobile nav ---------- */
+@media(max-width:900px){
+  /* Alto/ancho explícitos: el backdrop-filter del header sólido crea un bloque
+     contenedor para elementos fixed, así que no dependemos de inset:0. */
+  .navlinks{position:fixed;top:0;left:0;width:100vw;height:100dvh;background:var(--ink);flex-direction:column;justify-content:center;
+    gap:30px;font-size:1.1rem;color:var(--ivory);transform:translateY(-102%);transition:transform .6s var(--ease);z-index:80}
+  .navlinks.open{transform:none}
+  .navlinks a{padding:14px 26px}
+  header.solid .navlinks{color:var(--ivory)}
+  .burger{display:flex;z-index:95}
+  .nav-cta{border-color:var(--accent);color:var(--accent)}
+}
+
+/* ---------- Ajustes de teléfono ---------- */
+@media(max-width:560px){
+  .wrap{padding:0 22px}
+  .hero-in{padding:118px 22px 52px}
+  .hero h1{font-size:clamp(1.8rem,7.4vw,2.5rem);margin-top:18px;max-width:22ch}
+  .hero .label{letter-spacing:.2em}
+  .hero-foot{margin-top:34px;gap:22px}
+  .hero-cta{width:100%}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .btn-wa{width:100%}
+  .scrollcue{display:none}
+  section.pad{padding:70px 0}
+  .head-2 h2{font-size:clamp(2rem,8vw,2.6rem)}
+  .impact-in{padding:60px 0;gap:34px}
+  .step{padding:32px 24px}
+  .quote-band .in{padding:60px 22px}
+  .foot-cta{padding-bottom:52px}
+  .foot-top{gap:26px}
+  .mtrack{font-size:1.2rem;gap:44px}
+  .cinfo .k{width:92px}
+}
+@media(max-width:360px){
+  .hero h1{font-size:clamp(1.5rem,6.6vw,2rem)}
+  .brand .bt{font-size:1.02rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important}
+  .hero h1 .ln i,.hero-foot,.scrollcue{transform:none;opacity:1}
+  #loader{display:none}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Marca reutilizable (hoja geométrica inspirada en el logo) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="mark" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M50 12 L82 30 L82 62 L50 88 L18 62 L18 30 Z"/>
+      <path d="M50 12 L50 88"/>
+      <path d="M50 40 L82 30 M50 40 L18 30"/>
+      <path d="M50 40 L70 58 M50 40 L30 58"/>
+    </g>
+  </defs>
+</svg>
+
+<div id="loader">
+  <img src="img/logo-completo.jpg" alt="Jardinero de Pasión — Diseño y mantenimiento de jardines" class="loader-logo">
+</div>
+
+<!-- NAV -->
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Jardinero de Pasión — inicio">
+      <span class="bm"><svg viewBox="0 0 100 100" width="34" height="34" style="color:var(--accent)"><use href="#mark"/></svg></span>
+      <span class="bt">Jardinero de Pasión<small>Diseño &amp; jardines</small></span>
+    </a>
+    <button class="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="navlinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#proceso">Proceso</a>
+      <a class="nav-cta" href="#contacto">Solicitar cotización</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="bggrad"></div><div class="grain"></div>
+  <div class="wrap hero-in">
+    <span class="label">Diseño y mantenimiento de jardines · Costa Rica</span>
+    <h1>
+      <span class="ln"><i>Hacemos que tu jardín</i></span>
+      <span class="ln"><i>luzca como nuevo,</i></span>
+      <span class="ln"><i>sano y <em>lleno de vida</em>.</i></span>
+    </h1>
+    <div class="hero-foot">
+      <p>Diseño, mantenimiento, poda y riego para casas, condominios y espacios comerciales en el Gran Área Metropolitana.</p>
+      <div class="hero-cta"><a class="btn btn--dark" href="#contacto">Solicitar cotización</a></div>
+    </div>
+  </div>
+  <span class="scrollcue">Descubrir ↓</span>
+</section>
+
+<!-- ZONAS (marquee de confianza) -->
+<section class="clients">
+  <p class="lbl">Servimos el Gran Área Metropolitana</p>
+  <div class="marquee"><div class="mtrack" id="mtrack"></div></div>
+</section>
+
+<!-- MANIFIESTO -->
+<section class="manifesto reveal">
+  <div class="wrap in">
+    <span class="label">Nuestra filosofía</span>
+    <h2>Un jardín no se decora, <span class="mut">se cultiva con intención.</span> Cada planta, cada trazo y cada riego responden a cómo quieres vivir tu espacio.</h2>
+    <p class="sign">— Magdiel Huerta Mairena · Fundador</p>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="pad" id="servicios">
+  <div class="wrap">
+    <div class="head-2 reveal">
+      <div><span class="label">Lo que hacemos</span><h2 style="margin-top:18px">Servicios</h2></div>
+      <p>De la primera visita al mantenimiento continuo: un solo equipo cuida tu jardín en cada etapa.</p>
+    </div>
+    <div class="svc-list" id="svcList"></div>
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="pad gal" id="galeria">
+  <div class="wrap">
+    <div class="head-2 reveal">
+      <div><span class="label">Nuestro trabajo</span><h2 style="margin-top:18px">Galería de jardines</h2></div>
+      <p>Antes, durante y después. Cada proyecto refleja el cuidado y la pasión que ponemos en cada espacio.</p>
+    </div>
+    <div class="gal-grid" id="galGrid"></div>
+    <p class="gal-note">Fotografías reales de proyectos realizados por Jardinero de Pasión. Toca cualquier imagen para verla en detalle.</p>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section class="impact">
+  <div class="wrap impact-in reveal">
+    <div><div class="n" data-count="120">0</div><div class="t">Jardines atendidos</div></div>
+    <div><div class="n" data-count="8">0</div><div class="t">Zonas del GAM</div></div>
+    <div><div class="n" data-count="40">0</div><div class="t">Contratos mensuales</div></div>
+    <div><div class="n" data-count="100" data-suffix="%">0</div><div class="t">Pasión por el detalle</div></div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="pad" id="proceso">
+  <div class="wrap">
+    <div class="head-2 reveal">
+      <div><span class="label">Cómo trabajamos</span><h2 style="margin-top:18px">Nuestro proceso</h2></div>
+      <p>Claro, ordenado y sin sorpresas: sabes qué esperar en cada paso.</p>
+    </div>
+    <div class="proc reveal">
+      <div class="step"><div class="st-n">01</div><h3>Visita y diagnóstico</h3><p>Conocemos tu espacio, escuchamos lo que buscas y evaluamos plantas, suelo y riego.</p></div>
+      <div class="step"><div class="st-n">02</div><h3>Diseño y cotización</h3><p>Propuesta a la medida con materiales, plantas y una cotización detallada y transparente.</p></div>
+      <div class="step"><div class="st-n">03</div><h3>Ejecución</h3><p>Manos a la obra con un equipo cuidadoso, puntual y respetuoso con tu propiedad.</p></div>
+      <div class="step"><div class="st-n">04</div><h3>Mantenimiento continuo</h3><p>Poda, riego y cuidado programado para que tu jardín luzca impecable todo el año.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIO -->
+<section class="quote-band">
+  <div class="in reveal">
+    <div class="stars">★ ★ ★ ★ ★</div>
+    <blockquote>“Dejaron nuestro jardín mejor de lo que imaginamos. Puntuales, cuidadosos y con un gusto excelente. Ahora es el lugar favorito de la casa.”</blockquote>
+    <div class="who">Sra. Marta Vargas · Curridabat</div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="pad" id="contacto">
+  <div class="wrap">
+    <div class="head-2 reveal">
+      <div><span class="label">Hablemos</span><h2 style="margin-top:18px">Solicita tu cotización</h2></div>
+      <p>Cuéntanos sobre tu jardín por WhatsApp y te preparamos una cotización sin compromiso.</p>
+    </div>
+    <div class="contact-in">
+      <div class="cinfo reveal">
+        <p class="lead">Hacemos que tu jardín luzca como nuevo, sano y lleno de vida.</p>
+        <a class="btn-wa" href="https://wa.me/50672810468?text=Hola%20Jardinero%20de%20Pasi%C3%B3n%20%F0%9F%8C%BF%20Quisiera%20cotizar%20un%20servicio%20para%20mi%20jard%C3%ADn." target="_blank" rel="noopener" style="margin:0 0 26px">
+          <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.12.55 4.17 1.6 5.98L4 29l8.2-1.55a12 12 0 0 0 3.84.63h.01c6.63 0 12.03-5.4 12.03-12.04C28.08 8.4 22.68 3 16.04 3zm0 21.9h-.01c-1.2 0-2.38-.32-3.4-.93l-.24-.14-4.87.92.92-4.75-.16-.25a9.9 9.9 0 0 1-1.52-5.27c0-5.5 4.48-9.97 9.99-9.97 2.67 0 5.17 1.04 7.06 2.93a9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.98-9.97 9.98zm5.47-7.47c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+          Escribir por WhatsApp
+        </a>
+        <div class="row"><span class="k">WhatsApp</span><span class="v"><a href="https://wa.me/50672810468" id="waLink">+506 7281 0468</a></span></div>
+        <div class="row"><span class="k">Zona</span><span class="v">Gran Área Metropolitana, Costa Rica</span></div>
+        <div class="row"><span class="k">Horario</span><span class="v">Lunes a sábado · 7:00 a.m. – 5:00 p.m.</span></div>
+      </div>
+      <form class="form reveal" id="cotForm">
+        <label for="f-nom">Nombre</label>
+        <input id="f-nom" name="nombre" type="text" placeholder="Tu nombre" required>
+        <label for="f-tel">Teléfono / WhatsApp</label>
+        <input id="f-tel" name="tel" type="tel" placeholder="8888 8888">
+        <label for="f-serv">Servicio de interés</label>
+        <select id="f-serv" name="servicio">
+          <option>Diseño de jardín</option>
+          <option>Mantenimiento mensual</option>
+          <option>Poda</option>
+          <option>Sistema de riego</option>
+          <option>Otro / no estoy seguro</option>
+        </select>
+        <label for="f-zona">Zona</label>
+        <input id="f-zona" name="zona" type="text" placeholder="Ej: Curridabat">
+        <label for="f-msg">Cuéntanos sobre tu jardín</label>
+        <textarea id="f-msg" name="mensaje" rows="3" placeholder="Tamaño aproximado, qué te gustaría lograr…"></textarea>
+        <button class="btn" type="submit">Enviar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-cta reveal">
+      <span class="label">¿Comenzamos?</span>
+      <h2 style="margin-top:20px">Hablemos de <em>tu jardín</em>.</h2>
+      <a class="btn" href="#contacto">Solicitar cotización</a>
+    </div>
+    <div class="foot-top">
+      <div class="fbrand">
+        <img src="img/logo-completo.jpg" alt="Jardinero de Pasión — Diseño y mantenimiento de jardines" class="foot-logo">
+        <p>Diseño y mantenimiento de jardines en el Gran Área Metropolitana de Costa Rica. Espacios verdes pensados para vivirse.</p>
+      </div>
+      <div><h4>Servicios</h4><ul>
+        <li><a href="#servicios">Diseño de jardín</a></li>
+        <li><a href="#servicios">Mantenimiento</a></li>
+        <li><a href="#servicios">Poda</a></li>
+        <li><a href="#servicios">Riego</a></li>
+      </ul></div>
+      <div><h4>Explorar</h4><ul>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul></div>
+      <div><h4>Contacto</h4><ul>
+        <li><a href="https://wa.me/50672810468">WhatsApp</a></li>
+        <li>GAM, Costa Rica</li>
+      </ul></div>
+    </div>
+    <div class="foot-bot">
+      <span>© <span id="yr"></span> Jardinero de Pasión. Todos los derechos reservados.</span>
+      <span>Diseño &amp; mantenimiento de jardines</span>
+    </div>
+  </div>
+</footer>
+
+<!-- BOTÓN FLOTANTE DE WHATSAPP -->
+<a class="wa-float" href="https://wa.me/50672810468?text=Hola%20Jardinero%20de%20Pasi%C3%B3n%20%F0%9F%8C%BF%20Quisiera%20cotizar%20un%20servicio%20para%20mi%20jard%C3%ADn." target="_blank" rel="noopener" aria-label="Contáctanos por WhatsApp">
+  <span class="tip">Escríbenos por WhatsApp</span>
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.12.55 4.17 1.6 5.98L4 29l8.2-1.55a12 12 0 0 0 3.84.63h.01c6.63 0 12.03-5.4 12.03-12.04C28.08 8.4 22.68 3 16.04 3zm0 21.9h-.01c-1.2 0-2.38-.32-3.4-.93l-.24-.14-4.87.92.92-4.75-.16-.25a9.9 9.9 0 0 1-1.52-5.27c0-5.5 4.48-9.97 9.99-9.97 2.67 0 5.17 1.04 7.06 2.93a9.9 9.9 0 0 1 2.92 7.05c0 5.5-4.48 9.98-9.97 9.98zm5.47-7.47c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/></svg>
+</a>
+
+<!-- LIGHTBOX -->
+<div id="lb" role="dialog" aria-modal="true" aria-label="Detalle de proyecto">
+  <div class="card">
+    <button class="x" id="lbX" aria-label="Cerrar">✕</button>
+    <div class="thumb" id="lbThumb"></div>
+    <div class="info">
+      <div class="cat" id="lbCat"></div>
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Zonas marquee ---------- */
+const zonas=["Curridabat","San Pedro","Escazú","Tres Ríos","Sabanilla","Moravia","Belén","Heredia"];
+document.getElementById('mtrack').innerHTML=[...zonas,...zonas]
+  .map(z=>`<span>${z}</span>`).join('<span class="dot">✦</span>');
+
+/* ---------- Servicios ---------- */
+const servicios=[
+  {no:"01",t:"Diseño de jardín",d:"Proyectos a la medida: distribución, selección de plantas y elementos para crear un jardín con carácter."},
+  {no:"02",t:"Mantenimiento",d:"Cuidado programado de zonas verdes para casas, condominios y comercios. Contratos mensuales."},
+  {no:"03",t:"Poda",d:"Poda técnica y de formación que mantiene tus plantas sanas, ordenadas y con buena presencia."},
+  {no:"04",t:"Sistemas de riego",d:"Instalación y ajuste de riego eficiente: aspersores y tubería para un jardín siempre hidratado."}
+];
+document.getElementById('svcList').innerHTML=servicios.map(s=>`
+  <div class="svc-row">
+    <span class="no">${s.no}</span>
+    <h3>${s.t}</h3>
+    <p class="d">${s.d}</p>
+    <span class="ar">→</span>
+  </div>`).join('');
+
+/* ---------- Galería (fotos reales en img/galeria/) ---------- */
+const projects=[
+  {img:"img/galeria/foto-01.jpg",cat:"Diseño de jardín",title:"Patio interior verde",desc:"Césped natural, jardinera con plantas ornamentales y piedra decorativa en un patio interior."},
+  {img:"img/galeria/foto-02.jpg",cat:"Senderos & piedra",title:"Sendero con iluminación",desc:"Camino de losetas sobre piedra volcánica con luces solares y arbustos en el acceso."},
+  {img:"img/galeria/foto-03.jpg",cat:"Paisajismo",title:"Jardín lateral",desc:"Franja de césped bordeada con piedra de río y losetas de paso junto al muro."},
+  {img:"img/galeria/foto-04.jpg",cat:"Diseño de jardín",title:"Jardín con sendero de piedra",desc:"Césped, sendero de losetas sobre piedra blanca y arbustos podados en un patio amplio."},
+  {img:"img/galeria/foto-05.jpg",cat:"Paisajismo",title:"Camino de césped y cipreses",desc:"Sendero curvo de césped con cipreses y borde de piedra blanca hacia la terraza."},
+  {img:"img/galeria/foto-06.jpg",cat:"Diseño de jardín",title:"Jardín interior con macetas",desc:"Césped enmarcado en piedra y una colección de plantas ornamentales en maceta."},
+  {img:"img/galeria/foto-07.jpg",cat:"Zonas verdes",title:"Césped y piedra blanca",desc:"Rincón de césped con borde de piedra blanca junto a la fachada."},
+  {img:"img/galeria/foto-08.jpg",cat:"Paisajismo",title:"Jardinera con piedra de río",desc:"Jardinera de follaje y lengua de suegra con piedra de río y triturado."},
+  {img:"img/galeria/foto-09.jpg",cat:"Jardín frontal",title:"Frente con agaves",desc:"Jardín de bienvenida con agaves, arbustos podados y losetas sobre piedra blanca."},
+  {img:"img/galeria/foto-10.jpg",cat:"Paisajismo",title:"Jardín tropical",desc:"Zona verde con palmas y follaje tropical, bordeada de piedra de río."},
+  {img:"img/galeria/foto-11.jpg",cat:"Jardín frontal",title:"Jardín de bienvenida",desc:"Césped, macetas circulares con piedra y arbustos en la entrada de la casa."},
+  {img:"img/galeria/foto-12.jpg",cat:"Paisajismo",title:"Jardinera tropical",desc:"Palma y cordylines sobre lava roja, con contraste de piedra blanca."},
+  {img:"img/galeria/foto-13.jpg",cat:"Zonas verdes",title:"Césped y ciprés",desc:"Césped con ciprés y borde ondulado de piedra blanca."},
+  {img:"img/galeria/foto-14.jpg",cat:"Senderos & piedra",title:"Sendero lateral",desc:"Losetas de paso sobre piedra blanca con jardinera de follaje morado."},
+  {img:"img/galeria/foto-15.jpg",cat:"Zonas verdes",title:"Rincón minimalista",desc:"Tapete de césped enmarcado en piedra para un patio pequeño."},
+  {img:"img/galeria/foto-16.jpg",cat:"Diseño de jardín",title:"Jardín con luces",desc:"Césped con cipreses, arbustos y borde de piedra de río bajo luces colgantes."},
+  {img:"img/galeria/foto-17.jpg",cat:"Paisajismo",title:"Follaje tropical",desc:"Césped con jardinera de monstera y palmeras junto al muro."},
+  {img:"img/galeria/foto-18.jpg",cat:"Paisajismo",title:"Pasillo ajardinado",desc:"Corredor con palmas, cordylines y lava roja a lo largo del muro."},
+  {img:"img/galeria/foto-20.jpg",cat:"Jardín frontal",title:"Entrada con piedra negra",desc:"Cochera y acceso con franjas de piedra negra y jardineras laterales."},
+  {img:"img/galeria/foto-21.jpg",cat:"Zonas verdes",title:"Pasillo con césped",desc:"Césped con crotos y borde de piedra de río en un pasillo interior."},
+  {img:"img/galeria/foto-22.jpg",cat:"Senderos & piedra",title:"Jardín de piedras",desc:"Composición de piedra de río y triturado con crotos y follaje tropical."},
+  {img:"img/galeria/foto-23.jpg",cat:"Senderos & piedra",title:"Sendero lateral moderno",desc:"Losetas sobre piedra blanca con jardineras de plantas y piedra de río."},
+  {img:"img/galeria/foto-24.jpg",cat:"Diseño de jardín",title:"Jardín con losetas ovaladas",desc:"Césped con árbol central, losetas de paso y borde de ladrillo y piedra blanca."},
+  {img:"img/galeria/foto-25.jpg",cat:"Jardín frontal",title:"Frente moderno",desc:"Césped con agaves y arbustos podados frente a la casa."},
+  {img:"img/galeria/foto-26.jpg",cat:"Jardín frontal",title:"Entrada ajardinada",desc:"Césped, ciprés y sendero de losetas con jardín amplio al fondo."},
+  {img:"img/galeria/foto-27.jpg",cat:"Diseño de jardín",title:"Jardín seco contemporáneo",desc:"Gravilla, piedra de río y arbustos esféricos en un diseño de bajo mantenimiento."},
+  {img:"img/galeria/foto-28.jpg",cat:"Paisajismo",title:"Borde con cipreses",desc:"Cipreses y arbustos sobre piedra decorativa junto al césped."},
+  {img:"img/galeria/foto-29.jpg",cat:"Zonas verdes",title:"Terraza verde",desc:"Césped con área de estar y piso de piedra."}
+];
+const media=p=>`<img src="${p.img}" alt="${p.title}" loading="lazy">`;
+document.getElementById('galGrid').innerHTML=projects.map((p,i)=>`
+  <button class="gcard reveal" data-i="${i}" aria-label="Ver ${p.title}">
+    <div class="thumb">${media(p)}</div>
+    <div class="veil"><span class="cat">${p.cat}</span><span class="ct">${p.title}</span></div>
+  </button>`).join('');
+
+/* ---------- Lightbox ---------- */
+const lb=document.getElementById('lb');
+const lbThumb=document.getElementById('lbThumb');
+function openLb(i){
+  const p=projects[i];
+  lbThumb.classList.remove('zoomed');
+  lbThumb.innerHTML=media(p);
+  const im=lbThumb.querySelector('img'); if(im) im.style.transformOrigin='center';
+  document.getElementById('lbCat').textContent=p.cat;
+  document.getElementById('lbTitle').textContent=p.title;
+  document.getElementById('lbDesc').textContent=p.desc;
+  lb.classList.add('on');
+}
+function closeLb(){lb.classList.remove('on');lbThumb.classList.remove('zoomed')}
+// Zoom con el mouse: clic acerca/aleja; el mouse recorre la foto ampliada
+function setOrigin(e){const r=lbThumb.getBoundingClientRect(),im=lbThumb.querySelector('img');
+  if(im)im.style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';}
+lbThumb.addEventListener('click',e=>{const z=lbThumb.classList.toggle('zoomed');if(z)setOrigin(e);});
+lbThumb.addEventListener('mousemove',e=>{if(lbThumb.classList.contains('zoomed'))setOrigin(e);});
+document.getElementById('galGrid').addEventListener('click',e=>{
+  const b=e.target.closest('.gcard'); if(b) openLb(+b.dataset.i);
+});
+document.getElementById('lbX').addEventListener('click',closeLb);
+lb.addEventListener('click',e=>{if(e.target===lb)closeLb()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLb()});
+
+/* ---------- Nav scroll + burger ---------- */
+const hdr=document.querySelector('header');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40),{passive:true});
+const burger=document.querySelector('.burger'), links=document.querySelector('.navlinks');
+burger.addEventListener('click',()=>{
+  const open=links.classList.toggle('open');
+  burger.setAttribute('aria-expanded',open);
+});
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  links.classList.remove('open');burger.setAttribute('aria-expanded',false);
+}));
+
+/* ---------- Reveal on scroll ---------- */
+const io=new IntersectionObserver((es)=>es.forEach(en=>{
+  if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}
+}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- Contador de impacto ---------- */
+const cio=new IntersectionObserver((es)=>es.forEach(en=>{
+  if(!en.isIntersecting)return;
+  const el=en.target, end=+el.dataset.count, suf=el.dataset.suffix||"", dur=1400, t0=performance.now();
+  (function tick(t){
+    const p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(end*e)+suf;
+    if(p<1)requestAnimationFrame(tick);
+  })(t0);
+  cio.unobserve(el);
+},{threshold:.5}));
+document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+
+/* ---------- Formulario → WhatsApp ---------- */
+const WHATSAPP="50672810468"; // 506 + número, sin espacios
+document.getElementById('cotForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  const f=e.target;
+  const txt=`Hola Jardinero de Pasión 🌿%0A%0A`+
+    `*Nombre:* ${f.nombre.value}%0A`+
+    `*Teléfono:* ${f.tel.value}%0A`+
+    `*Servicio:* ${f.servicio.value}%0A`+
+    `*Zona:* ${f.zona.value}%0A`+
+    `*Mensaje:* ${f.mensaje.value}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${txt}`,'_blank');
+});
+
+/* ---------- Año ---------- */
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- Respaldo del loader (por si las animaciones se limitan) ---------- */
+setTimeout(()=>{const l=document.getElementById('loader');if(l)l.style.display='none';},3200);
+</script>
+</body>
+</html>

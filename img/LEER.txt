@@ -1,0 +1,13 @@
+Guarda aquí las fotos del equipo.
+
+Para la foto de Dereck (la que ya se usa en la web), guárdala en esta carpeta
+con EXACTAMENTE este nombre:
+
+    dereck.jpg
+
+Ruta completa:
+    C:\Users\Dereck\Documents\Nexo\img\dereck.jpg
+
+Recomendado: imagen cuadrada o vertical, mínimo 600x750 px, formato .jpg.
+Si el archivo no existe, la web muestra un monograma "DD" como respaldo
+(no se rompe nada).

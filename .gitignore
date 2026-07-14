@@ -1,0 +1,12 @@
+# Config local de Claude Code (no publicar)
+.claude/
+
+# Fotos fuente sin usar por el sitio (las que usa están en img/)
+fotos de perfil/
+
+# Sistema / temporales
+Thumbs.db
+desktop.ini
+.DS_Store
+*.log
+node_modules/

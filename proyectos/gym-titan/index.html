@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Titán Gym — Entrena como nunca | Costa Rica</title>
+<meta name="description" content="Titán Gym — Musculación, CrossFit, spinning y más. Entrenadores certificados, equipos de última generación y planes para cada meta. San José, Costa Rica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0E0F12; --bg2:#16181D; --card:#1B1E24; --line:rgba(255,255,255,.08);
+  --lime:#C6FF00; --red:#FF3B30; --ink:#F3F4F6; --mut:#9AA0A8;
+  --disp:"Anton",system-ui,sans-serif; --os:"Oswald",system-ui,sans-serif; --sans:"Inter",system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-family:var(--os);text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;color:var(--lime);border:1px solid rgba(198,255,0,.35);padding:8px 16px;border-radius:40px;background:rgba(198,255,0,.05)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime)}
+h1,h2,h3{font-family:var(--disp);font-weight:400;text-transform:uppercase;line-height:.98;letter-spacing:.01em}
+.accent{color:var(--lime)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--os);text-transform:uppercase;letter-spacing:.08em;font-weight:600;font-size:.9rem;padding:15px 30px;border-radius:8px;cursor:pointer;transition:.25s;border:1px solid transparent}
+.btn--p{background:var(--lime);color:#0E0F12}
+.btn--p:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(198,255,0,.28)}
+.btn--g{border-color:rgba(255,255,255,.25);color:var(--ink)}
+.btn--g:hover{border-color:var(--lime);color:var(--lime)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.3s}
+header.solid{background:rgba(14,15,18,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--disp);font-size:1.5rem;text-transform:uppercase;letter-spacing:.02em}
+.brand .mk{width:38px;height:38px;flex:none}
+.brand b{color:var(--lime)}
+.links{display:flex;gap:32px;font-family:var(--os);text-transform:uppercase;letter-spacing:.1em;font-size:.82rem}
+.links a{color:var(--mut);transition:.2s}.links a:hover{color:var(--lime)}
+.burger{display:none}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 60px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 50% at 78% 40%,rgba(198,255,0,.10),transparent 60%),
+  radial-gradient(50% 50% at 10% 90%,rgba(255,59,48,.10),transparent 60%);z-index:0}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;width:100%}
+.hero h1{font-size:clamp(3rem,7vw,6.2rem);margin:22px 0 20px}
+.hero p.sub{color:var(--mut);font-size:1.15rem;max-width:46ch;font-weight:300}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.stats{display:flex;gap:38px;margin-top:48px;flex-wrap:wrap}
+.stat .n{font-family:var(--disp);font-size:2.6rem;color:var(--lime);line-height:1}
+.stat .l{font-family:var(--os);text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--mut);margin-top:6px}
+.hero-art{position:relative;display:grid;place-items:center}
+.hero-art svg{width:100%;max-width:440px;filter:drop-shadow(0 20px 50px rgba(0,0,0,.5))}
+
+/* sections */
+section{position:relative;z-index:1}
+.pad{padding:100px 0}
+.head{max-width:640px;margin-bottom:52px}
+.head .eyebrow{margin-bottom:18px}
+.head h2{font-size:clamp(2rem,4.5vw,3.4rem)}
+.head p{color:var(--mut);margin-top:14px;font-weight:300}
+
+/* services */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:.28s}
+.svc:hover{transform:translateY(-8px);border-color:rgba(198,255,0,.4);background:#20242b}
+.svc .ic{font-size:2rem;margin-bottom:16px}
+.svc h3{font-family:var(--os);text-transform:uppercase;font-size:1.25rem;letter-spacing:.03em;color:var(--ink)}
+.svc p{color:var(--mut);font-size:.94rem;margin-top:10px;font-weight:300}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:38px 30px;display:flex;flex-direction:column}
+.plan.feat{background:linear-gradient(160deg,#20242b,#16181d);border-color:var(--lime);transform:scale(1.03);position:relative}
+.plan.feat::before{content:"Recomendado";position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--lime);color:#0E0F12;font-family:var(--os);text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;font-weight:700;padding:6px 16px;border-radius:20px}
+.plan .t{font-family:var(--os);text-transform:uppercase;letter-spacing:.08em;color:var(--mut);font-size:.9rem}
+.plan .price{font-family:var(--disp);font-size:3rem;margin:14px 0 4px;line-height:1}
+.plan .price small{font-size:1rem;color:var(--mut);font-family:var(--sans)}
+.plan ul{list-style:none;margin:24px 0 28px;display:flex;flex-direction:column;gap:12px}
+.plan li{color:var(--mut);font-size:.92rem;display:flex;gap:10px;align-items:flex-start}
+.plan li::before{content:"✓";color:var(--lime);font-weight:700}
+.plan .btn{margin-top:auto;justify-content:center}
+
+/* why band */
+.why{background:linear-gradient(120deg,#16181d,#0E0F12);border-block:1px solid var(--line)}
+.why-in{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
+.why .ic{font-size:2.2rem;margin-bottom:10px}
+.why h3{font-family:var(--os);text-transform:uppercase;font-size:1.05rem;color:var(--ink)}
+.why p{color:var(--mut);font-size:.88rem;font-weight:300;margin-top:6px}
+
+/* footer */
+footer{background:#0a0b0d;border-top:1px solid var(--line);padding:64px 0 28px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot p{color:var(--mut);font-size:.9rem;font-weight:300;margin-top:14px;max-width:34ch}
+.foot h4{font-family:var(--os);text-transform:uppercase;letter-spacing:.1em;font-size:.85rem;color:var(--ink);margin-bottom:16px}
+.foot a,.foot li{color:var(--mut);font-size:.9rem;list-style:none;line-height:2;display:block}
+.foot a:hover{color:var(--lime)}
+.social{display:flex;gap:12px;margin-top:16px}
+.social a{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--mut)}
+.social a:hover{border-color:var(--lime);color:var(--lime)}
+.copy{text-align:center;color:var(--mut);font-size:.8rem;margin-top:48px;padding-top:24px;border-top:1px solid var(--line)}
+
+/* whatsapp */
+.wa{position:fixed;bottom:26px;right:26px;width:60px;height:60px;background:#25D366;border-radius:50%;display:grid;place-items:center;box-shadow:0 10px 30px rgba(37,211,102,.4);z-index:60;animation:waPulse 2.4s infinite}
+@keyframes waPulse{0%,100%{box-shadow:0 10px 30px rgba(37,211,102,.4)}50%{box-shadow:0 10px 40px rgba(37,211,102,.7)}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero-grid,.foot-grid{grid-template-columns:1fr}
+  .hero-art{order:-1;max-width:300px;margin:0 auto}
+  .grid,.plans,.why-in{grid-template-columns:1fr}
+  .plan.feat{transform:none}
+  .links{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#top" class="brand">
+      <svg class="mk" viewBox="0 0 40 40" fill="none"><rect x="2" y="14" width="6" height="12" rx="2" fill="#C6FF00"/><rect x="32" y="14" width="6" height="12" rx="2" fill="#C6FF00"/><rect x="8" y="17" width="24" height="6" rx="3" fill="#fff"/><rect x="0" y="17" width="4" height="6" fill="#FF3B30"/><rect x="36" y="17" width="4" height="6" fill="#FF3B30"/></svg>
+      TITÁN<b>GYM</b>
+    </a>
+    <nav class="links">
+      <a href="#clases">Clases</a>
+      <a href="#planes">Planes</a>
+      <a href="#nosotros">Nosotros</a>
+    </nav>
+    <a href="#planes" class="btn btn--p">Prueba gratis</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Gimnasio · San José, Costa Rica</span>
+      <h1>Entrena hoy,<br>domina <span class="accent">mañana.</span></h1>
+      <p class="sub">Musculación, CrossFit y clases grupales con entrenadores certificados y equipo de última generación. Tu mejor versión empieza aquí.</p>
+      <div class="cta">
+        <a href="#planes" class="btn btn--p">Comienza ahora</a>
+        <a href="#clases" class="btn btn--g">Ver clases</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">2.400+</div><div class="l">Socios activos</div></div>
+        <div class="stat"><div class="n">18</div><div class="l">Entrenadores</div></div>
+        <div class="stat"><div class="n">900m²</div><div class="l">De entrenamiento</div></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="170" stroke="rgba(198,255,0,.18)" stroke-width="2" stroke-dasharray="6 10"/>
+        <circle cx="200" cy="200" r="130" stroke="rgba(255,255,255,.08)" stroke-width="2"/>
+        <g transform="rotate(-18 200 200)">
+          <rect x="60" y="182" width="280" height="36" rx="18" fill="#2a2f37"/>
+          <rect x="60" y="188" width="280" height="10" rx="5" fill="#3a4049"/>
+          <rect x="22" y="150" width="46" height="100" rx="14" fill="#C6FF00"/>
+          <rect x="0" y="164" width="26" height="72" rx="10" fill="#FF3B30"/>
+          <rect x="332" y="150" width="46" height="100" rx="14" fill="#C6FF00"/>
+          <rect x="374" y="164" width="26" height="72" rx="10" fill="#FF3B30"/>
+        </g>
+        <text x="200" y="330" text-anchor="middle" font-family="Anton" font-size="34" fill="rgba(255,255,255,.9)">SIN EXCUSAS</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="clases">
+  <div class="wrap">
+    <div class="head rv">
+      <span class="eyebrow">Lo que ofrecemos</span>
+      <h2>Clases para cada meta</h2>
+      <p>Desde fuerza pura hasta cardio de alta intensidad, tenemos el programa perfecto para ti.</p>
+    </div>
+    <div class="grid">
+      <div class="svc rv"><div class="ic">🏋️</div><h3>Musculación</h3><p>Zona de peso libre y máquinas premium para ganar fuerza y masa muscular.</p></div>
+      <div class="svc rv"><div class="ic">🔥</div><h3>CrossFit</h3><p>Entrenamiento funcional de alta intensidad en box equipado con coach dedicado.</p></div>
+      <div class="svc rv"><div class="ic">🚴</div><h3>Spinning</h3><p>Clases de ciclismo indoor con música, luces y energía que te llevan al límite.</p></div>
+      <div class="svc rv"><div class="ic">🥊</div><h3>Boxeo</h3><p>Técnica, cardio y descarga total. Aprende a golpear y ponte en forma.</p></div>
+      <div class="svc rv"><div class="ic">🤸</div><h3>Funcional</h3><p>Movimientos naturales para mejorar movilidad, resistencia y coordinación.</p></div>
+      <div class="svc rv"><div class="ic">🧘</div><h3>Yoga & Movilidad</h3><p>Recupérate, gana flexibilidad y equilibra cuerpo y mente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="pad" id="planes" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="head rv" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow">Membresías</span>
+      <h2>Elige tu plan</h2>
+      <p>Sin matrícula el primer mes. Cancela cuando quieras.</p>
+    </div>
+    <div class="plans">
+      <div class="plan rv">
+        <div class="t">Básico</div>
+        <div class="price">₡14.900<small>/mes</small></div>
+        <ul>
+          <li>Acceso a sala de máquinas</li>
+          <li>Horario de 6am a 9pm</li>
+          <li>App de rutinas</li>
+          <li>Casillero incluido</li>
+        </ul>
+        <a href="#" class="btn btn--g">Elegir Básico</a>
+      </div>
+      <div class="plan feat rv">
+        <div class="t">Pro</div>
+        <div class="price">₡22.900<small>/mes</small></div>
+        <ul>
+          <li>Todo lo del plan Básico</li>
+          <li>Todas las clases grupales</li>
+          <li>1 evaluación física mensual</li>
+          <li>Acceso 24/7</li>
+          <li>Invitado 1 vez al mes</li>
+        </ul>
+        <a href="#" class="btn btn--p">Elegir Pro</a>
+      </div>
+      <div class="plan rv">
+        <div class="t">Élite</div>
+        <div class="price">₡34.900<small>/mes</small></div>
+        <ul>
+          <li>Todo lo del plan Pro</li>
+          <li>Entrenador personal (4 sesiones)</li>
+          <li>Plan nutricional personalizado</li>
+          <li>Acceso a sauna y recuperación</li>
+        </ul>
+        <a href="#" class="btn btn--g">Elegir Élite</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why pad" id="nosotros">
+  <div class="wrap">
+    <div class="head rv" style="margin-left:auto;margin-right:auto;text-align:center">
+      <span class="eyebrow">Por qué Titán</span>
+      <h2>Más que un gimnasio</h2>
+    </div>
+    <div class="why-in">
+      <div class="rv"><div class="ic">👟</div><h3>Equipo premium</h3><p>Máquinas Technogym y peso libre de sobra, siempre en óptimas condiciones.</p></div>
+      <div class="rv"><div class="ic">🎓</div><h3>Coaches certificados</h3><p>Profesionales que te guían con técnica y seguridad en cada sesión.</p></div>
+      <div class="rv"><div class="ic">🕒</div><h3>Acceso 24/7</h3><p>Entrena a la hora que se ajuste a tu vida, todos los días.</p></div>
+      <div class="rv"><div class="ic">📊</div><h3>Seguimiento real</h3><p>Medimos tu progreso para que veas resultados, no solo sudor.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot">
+        <a href="#top" class="brand">TITÁN<b>GYM</b></a>
+        <p>Tu templo del entrenamiento en Costa Rica. Fuerza, comunidad y resultados desde 2018.</p>
+        <div class="social">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c2.7 0 3 0 4.1.1 1 .1 1.7.2 2.3.5.6.2 1.1.5 1.6 1 .5.5.8 1 1 1.6.2.6.4 1.3.5 2.3.1 1.1.1 1.4.1 4.1s0 3-.1 4.1c-.1 1-.2 1.7-.5 2.3-.2.6-.5 1.1-1 1.6-.5.5-1 .8-1.6 1-.6.2-1.3.4-2.3.5-1.1.1-1.4.1-4.1.1s-3 0-4.1-.1c-1-.1-1.7-.2-2.3-.5-.6-.2-1.1-.5-1.6-1-.5-.5-.8-1-1-1.6-.2-.6-.4-1.3-.5-2.3C2 15 2 14.7 2 12s0-3 .1-4.1c.1-1 .2-1.7.5-2.3.2-.6.5-1.1 1-1.6.5-.5 1-.8 1.6-1 .6-.2 1.3-.4 2.3-.5C9 2 9.3 2 12 2zm0 5a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zM17.8 6.2a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H7v3h3v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.1 1.5 3.8 3.6 4.2v2.9c-1.3.1-2.5-.3-3.6-1v5.9c0 3.3-2.7 5.9-6 5.5-2.6-.3-4.6-2.5-4.5-5.1.1-2.9 2.7-5 5.6-4.6v3c-.5-.2-1-.2-1.5 0-1 .3-1.6 1.3-1.3 2.4.2.9 1.1 1.5 2 1.4 1-.1 1.7-.9 1.7-1.9V3H16z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot">
+        <h4>Contacto</h4>
+        <ul>
+          <li>Av. Central, San José</li>
+          <li>Tel: 2222-3344</li>
+          <li>Lun–Dom · 24 horas</li>
+          <li>hola@titangym.cr</li>
+        </ul>
+      </div>
+      <div class="foot">
+        <h4>Enlaces</h4>
+        <a href="#clases">Clases</a>
+        <a href="#planes">Planes</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#top">Volver arriba</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 Titán Gym S.A. · Todos los derechos reservados · Sitio demo</div>
+  </div>
+</footer>
+</main>
+
+<a class="wa" href="#" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 2a8 8 0 016.8 12.2l-.3.5.7 2.5-2.6-.7-.4.2A8 8 0 1112 4zm-3 4c-.2 0-.5 0-.7.4-.3.4-1 1-1 2.3s1 2.7 1.2 2.9c.2.2 2 3.1 5 4.2 2.5.9 3 .7 3.5.7.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4l-.6-.3s-1.6-.8-1.9-.9c-.2-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5v-.5c-.1-.1-.6-1.5-.9-2C9.6 8 9.4 8 9.2 8H9z"/></svg>
+</a>
+
+<script>
+(function(){
+  var hd=document.getElementById('hd');
+  var onScroll=function(){hd.classList.toggle('solid',scrollY>30);};
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in');});return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14});
+  document.querySelectorAll('.rv').forEach(function(e){io.observe(e);});
+})();
+</script>
+</body>
+</html>

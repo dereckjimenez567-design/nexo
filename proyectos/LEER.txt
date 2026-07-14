@@ -1,0 +1,37 @@
+========================================================
+  CÓMO AGREGAR TUS PÁGINAS AL PORTAFOLIO (vista interactiva)
+========================================================
+
+Cada página que quieras mostrar = UNA carpeta aquí dentro.
+
+Ejemplo:
+  proyectos/
+    constructora-segovia/ <- proyecto real ya conectado
+      index.html
+      css/  js/  img/...
+    tienda-online/        <- otra página tuya
+      index.html
+      estilos.css
+      script.js
+      img/...
+
+REGLAS SIMPLES
+1. Cada carpeta DEBE tener un archivo llamado "index.html" (esa es la que se abre).
+2. Mete junto todos sus archivos: CSS, JS, imágenes, etc.
+3. Usa rutas RELATIVAS dentro de tu página (ej: "estilos.css", "img/foto.jpg"),
+   NO rutas absolutas del tipo "C:\Users\..." ni "/algo".
+4. El nombre de la carpeta: minúsculas, sin espacios ni acentos
+   (usa guiones: "mi-proyecto").
+
+DESPUÉS DE SOLTAR LA CARPETA
+Dime el nombre de la carpeta y estos datos y yo la conecto a la galería:
+  - Título      (ej: "Tienda Online")
+  - Categoría   (ej: "E-commerce")
+  - Cliente/loc (ej: "Retail")
+  - Descripción corta
+
+(Opcional) Si me das una captura de la página como "thumb.jpg" dentro de la
+carpeta, la uso como miniatura de la tarjeta. Si no, uso un mockup automático.
+
+¿No tienes los archivos sueltos sino solo el código? Pégamelo en el chat y yo
+creo la carpeta por ti.
