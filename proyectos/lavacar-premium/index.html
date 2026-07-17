@@ -308,6 +308,7 @@
 
     <nav class="nav-links" id="navLinks">
       <a href="#servicios">Servicios</a>
+      <a href="#resultados">Resultados</a>
       <a href="#precios">Precios</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto">Contacto</a>
@@ -444,6 +445,66 @@
       <div class="card reveal"><div class="icon">🧴</div><h3>Detailing Interior</h3><p>Shampoo de tapicería, tratamiento de cuero, descontaminación de plásticos y eliminación de olores a nivel profundo.</p></div>
       <div class="card reveal"><div class="icon">💡</div><h3>Pulido de Faros</h3><p>Devolvemos la transparencia a faros opacos o amarillentos para más seguridad y una mirada como nueva.</p></div>
       <div class="card reveal"><div class="icon">💎</div><h3>Tratamiento Cerámico</h3><p>Recubrimiento cerámico 9H con hidrofobia extrema y protección de brillo espejo por hasta 3 años.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTADOS (antes/después + galería) ============ -->
+<style>
+  .results{background:linear-gradient(180deg,var(--navy),var(--navy-2))}
+  .ba{position:relative;max-width:920px;margin:0 auto;aspect-ratio:16/10;border-radius:var(--radius);overflow:hidden;
+     box-shadow:var(--shadow);border:1px solid var(--card-brd);cursor:ew-resize;user-select:none;touch-action:none;--pos:50%}
+  .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+  .ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
+  .ba-before img{filter:saturate(.28) brightness(.68) contrast(.92)}
+  .ba-before::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(74,58,36,.4),rgba(38,44,54,.34))}
+  .ba-tag{position:absolute;top:16px;padding:6px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.09em;
+     text-transform:uppercase;background:rgba(4,18,31,.72);color:#fff;backdrop-filter:blur(4px);z-index:3}
+  .ba-tag-a{left:16px}.ba-tag-b{right:16px;background:var(--grad-aqua);color:#04121f}
+  .ba-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:0;transform:translateX(-50%);z-index:4;pointer-events:none}
+  .ba-line{position:absolute;top:0;bottom:0;left:50%;width:3px;transform:translateX(-50%);background:#fff;box-shadow:0 0 14px rgba(0,0,0,.55)}
+  .ba-grip{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;
+     background:var(--grad-aqua);color:#04121f;display:grid;place-items:center;font-size:1.2rem;font-weight:700;box-shadow:0 6px 22px rgba(0,0,0,.45)}
+  .ba-hint{text-align:center;color:var(--muted);font-size:.85rem;margin-top:16px}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px}
+  .gtile{position:relative;display:block;border-radius:14px;overflow:hidden;aspect-ratio:4/3;border:1px solid var(--card-brd);background:var(--card)}
+  .gtile img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;display:block}
+  .gtile:hover img{transform:scale(1.08)}
+  .gtile .gcap{position:absolute;left:0;right:0;bottom:0;padding:16px 16px 14px;
+     background:linear-gradient(transparent,rgba(4,18,31,.9));color:#fff;font-size:.86rem;font-weight:600;
+     opacity:0;transform:translateY(10px);transition:opacity .3s ease,transform .3s ease}
+  .gtile:hover .gcap{opacity:1;transform:none}
+  @media(max-width:900px){.gallery{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.gallery{grid-template-columns:1fr}}
+</style>
+<section class="sec results" id="resultados">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-tag">Resultados reales</span>
+      <h2>Antes y <span class="accent">después</span></h2>
+      <p>Arrastrá el control para ver la transformación —del polvo del camino al brillo de exhibición.</p>
+    </div>
+    <div class="ba reveal" id="ba" aria-label="Comparación antes y después">
+      <img class="ba-after" src="img/slider-car.jpg" alt="Auto después del lavado, limpio y brillante">
+      <div class="ba-before"><img src="img/slider-car.jpg" alt="Auto antes del lavado"></div>
+      <span class="ba-tag ba-tag-a">Antes</span>
+      <span class="ba-tag ba-tag-b">Después</span>
+      <div class="ba-handle"><span class="ba-line"></span><span class="ba-grip">⇆</span></div>
+    </div>
+    <p class="ba-hint">👆 Arrastrá el círculo de lado a lado</p>
+
+    <div class="sec-head reveal" style="margin-top:100px">
+      <span class="sec-tag">Galería</span>
+      <h2>Trabajos <span class="accent">en detalle</span></h2>
+      <p>Un vistazo a nuestro proceso y a los acabados que entregamos.</p>
+    </div>
+    <div class="gallery">
+      <figure class="gtile reveal"><img src="img/g1-rin.jpg" alt="Limpieza de rines" loading="lazy"><figcaption class="gcap">Limpieza profunda de rines</figcaption></figure>
+      <figure class="gtile reveal"><img src="img/g2-pulido.jpg" alt="Pulido con máquina" loading="lazy"><figcaption class="gcap">Pulido y corrección de pintura</figcaption></figure>
+      <figure class="gtile reveal"><img src="img/g3-productos.jpg" alt="Productos premium de detailing" loading="lazy"><figcaption class="gcap">Productos premium</figcaption></figure>
+      <figure class="gtile reveal"><img src="img/g4-ceramico.jpg" alt="Tratamiento cerámico e hidrofobia" loading="lazy"><figcaption class="gcap">Tratamiento cerámico</figcaption></figure>
+      <figure class="gtile reveal"><img src="img/g5-llanta.jpg" alt="Detallado de llantas" loading="lazy"><figcaption class="gcap">Detallado de llantas</figcaption></figure>
+      <figure class="gtile reveal"><img src="img/g6-faro.jpg" alt="Pulido de faros" loading="lazy"><figcaption class="gcap">Pulido de faros</figcaption></figure>
     </div>
   </div>
 </section>
@@ -640,6 +701,36 @@
     }, {threshold:.15, rootMargin:'0px 0px -60px 0px'});
     reveals.forEach(el => io.observe(el));
   }
+
+  // Slider antes/después
+  (function(){
+    var ba = document.getElementById('ba');
+    if(!ba) return;
+    function setPos(clientX){
+      var r = ba.getBoundingClientRect();
+      var p = ((clientX - r.left) / r.width) * 100;
+      p = Math.max(0, Math.min(100, p));
+      ba.style.setProperty('--pos', p + '%');
+    }
+    var dragging = false;
+    ba.addEventListener('pointerdown', function(e){ dragging = true; try{ba.setPointerCapture(e.pointerId);}catch(_){}; setPos(e.clientX); });
+    ba.addEventListener('pointermove', function(e){ if(dragging) setPos(e.clientX); });
+    ba.addEventListener('pointerup', function(){ dragging = false; });
+    ba.addEventListener('pointercancel', function(){ dragging = false; });
+    // pequeña animación de invitación al aparecer
+    if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      var io2 = new IntersectionObserver(function(en){
+        en.forEach(function(x){
+          if(x.isIntersecting){
+            ba.style.setProperty('--pos','68%');
+            setTimeout(function(){ba.style.transition='';ba.style.setProperty('--pos','50%');},700);
+            io2.unobserve(ba);
+          }
+        });
+      },{threshold:.4});
+      io2.observe(ba);
+    }
+  })();
 </script>
 </body>
 </html>
