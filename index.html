@@ -208,6 +208,15 @@ header.solid .burger span{background:var(--brand)}
 .page-head .label{display:block;margin-bottom:18px}
 .page-head h1{font-size:var(--step-5);font-weight:600}
 .page-head p{margin-top:20px;color:var(--body);font-weight:300;font-size:var(--step-1);max-width:58ch;line-height:1.5}
+/* Estado "Próximamente" (dashboards) */
+.soon{max-width:640px;margin:0 auto;text-align:center;background:var(--night);color:var(--ground);
+  border:1px solid var(--line-a);border-radius:18px;padding:64px 40px}
+.soon-ic{width:74px;height:74px;margin:0 auto 22px;border-radius:18px;display:grid;place-items:center;
+  color:var(--cyan);background:rgba(34,211,238,.10);border:1px solid var(--line-a)}
+.soon-ic svg{width:36px;height:36px}
+.soon .label{color:var(--cyan);display:inline-block;margin-bottom:14px}
+.soon h2{font-size:var(--step-4);font-weight:600}
+.soon p{color:rgba(243,242,250,.75);font-weight:300;font-size:var(--step-1);margin:16px auto 30px;max-width:46ch;line-height:1.55}
 
 /* ============ SECTION HEAD ============ */
 .shead{max-width:760px}
@@ -612,16 +621,18 @@ footer{background:var(--night);color:rgba(243,242,250,.72);padding:90px 0 34px}
   </div></div>
   <section class="pad">
     <div class="wrap">
-      <div class="cases" id="dash-cases"></div>
-    </div>
-  </section>
-  <section class="pad" style="background:var(--surface)">
-    <div class="wrap">
-      <div class="shead reveal">
-        <span class="label" data-i18n="dash.g">Más paneles</span>
-        <h2 data-i18n="dash.gt">Selección de trabajos.</h2>
+      <div class="soon reveal">
+        <div class="soon-ic" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+            <path d="M13 13h4"/><path d="M13 17h4"/>
+          </svg>
+        </div>
+        <span class="label" data-i18n="dash.soonk">En construcción</span>
+        <h2 data-i18n="dash.soont">Próximamente</h2>
+        <p data-i18n="dash.soond">Estamos preparando una selección de paneles administrativos y dashboards para mostrar aquí. ¡Muy pronto habrá más proyectos!</p>
+        <a class="btn btn--grad" href="#contacto" data-route="contacto" data-i18n="dash.soonc">Hablemos de tu proyecto</a>
       </div>
-      <div class="gal-grid" id="dash-grid"></div>
     </div>
   </section>
 </section>
@@ -768,6 +779,7 @@ const I18N = {
     "proc.label":"Cómo trabajamos","proc.title":"Un método claro, sin sorpresas.",
     "web.label":"Portafolio","web.title":"Diseño Web","web.sub":"Sitios corporativos, landing pages y tiendas online diseñados a la medida —rápidos, accesibles y orientados a convertir.","web.g":"Más proyectos web","web.gt":"Selección de trabajos.",
     "dash.label":"Portafolio","dash.title":"Paneles & Dashboards","dash.sub":"Paneles administrativos, dashboards y sistemas internos que convierten tus datos en decisiones y automatizan tu operación.","dash.g":"Más paneles","dash.gt":"Selección de trabajos.",
+    "dash.soonk":"En construcción","dash.soont":"Próximamente","dash.soond":"Estamos preparando una selección de paneles administrativos y dashboards para mostrar aquí. ¡Muy pronto habrá más proyectos!","dash.soonc":"Hablemos de tu proyecto",
     "team.label":"Nosotros","team.title":"Nuestro equipo","team.sub":"Un equipo pequeño y capacitado que combina diseño, desarrollo y conocimiento contable. (Nombres y fotos de ejemplo — reemplázalos por tu equipo real.)",
     "quote.text":"“Creemos que la tecnología solo vale si tu equipo la entiende y la usa cada día. Por eso diseñamos herramientas claras, no complejas.”","quote.who":"Nexo · Nuestra promesa",
     "ct.label":"Contacto","ct.title":"Hablemos.","ct.sub":"Escríbenos con una idea, un problema o un objetivo. Respondemos con una propuesta clara.",
@@ -800,6 +812,7 @@ const I18N = {
     "proc.label":"How we work","proc.title":"A clear method, no surprises.",
     "web.label":"Portfolio","web.title":"Web Design","web.sub":"Corporate sites, landing pages and online stores built to measure —fast, accessible and conversion-focused.","web.g":"More web projects","web.gt":"Selected work.",
     "dash.label":"Portfolio","dash.title":"Panels & Dashboards","dash.sub":"Admin panels, dashboards and internal systems that turn your data into decisions and automate your operation.","dash.g":"More panels","dash.gt":"Selected work.",
+    "dash.soonk":"In progress","dash.soont":"Coming soon","dash.soond":"We're putting together a selection of admin panels and dashboards to showcase here. More projects are on the way!","dash.soonc":"Let's talk about your project",
     "team.label":"About","team.title":"Our team","team.sub":"A small, capable team blending design, development and accounting know-how. (Sample names and photos — replace with your real team.)",
     "quote.text":"“We believe technology is only worth it if your team understands and uses it every day. That's why we design tools that are clear, not complex.”","quote.who":"Nexo · Our promise",
     "ct.label":"Contact","ct.title":"Let's talk.","ct.sub":"Write to us with an idea, a problem or a goal. We reply with a clear proposal.",
@@ -846,18 +859,11 @@ const PROJECTS = [
   {grp:"web",kind:"web",cls:"wide",live:"proyectos/constructora-segovia/",preview:"proyectos/constructora-segovia/thumb.jpg",cat:{es:"Sitio Web · Construcción",en:"Website · Construction"},t:{es:"Constructora Segovia",en:"Segovia Construction"},loc:{es:"Construcción & remodelaciones",en:"Construction & remodeling"},d:{es:"Sitio institucional para una constructora: servicios, galería de obras y solicitud de presupuesto. Ábrelo para navegarlo en vivo.",en:"Corporate site for a construction firm: services, project gallery and quote requests. Open it to browse live."}},
   {grp:"web",kind:"web",cls:"wide",live:"proyectos/inversiones-marioja/",preview:"proyectos/inversiones-marioja/thumb.jpg",cat:{es:"Sitio Web · Andamios",en:"Website · Scaffolding"},t:{es:"Inversiones Marioja",en:"Inversiones Marioja"},loc:{es:"Alquiler de andamios · Costa Rica",en:"Scaffolding rental · Costa Rica"},d:{es:"Sitio en React para una empresa de alquiler de andamios: servicios, proceso y solicitud de cotización. Ábrelo para navegarlo en vivo.",en:"React site for a scaffolding rental company: services, process and quote requests. Open it to browse live."}},
   {grp:"web",kind:"web",cls:"wide",live:"proyectos/jardineros-de-pasion/",preview:"proyectos/jardineros-de-pasion/thumb.jpg",cat:{es:"Sitio Web · Jardinería",en:"Website · Landscaping"},t:{es:"Jardinero de Pasión",en:"Jardinero de Pasión"},loc:{es:"Diseño & mantenimiento de jardines · Costa Rica",en:"Garden design & maintenance · Costa Rica"},d:{es:"Sitio para una empresa de diseño y mantenimiento de jardines: servicios, galería de proyectos y cotización. Ábrelo para navegarlo en vivo.",en:"Site for a garden design and maintenance company: services, project gallery and quotes. Open it to browse live."}},
-  {grp:"web",kind:"web",feat:true,yr:"2026",cat:{es:"Diseño Web · Servicios",en:"Web Design · Services"},t:{es:"Portal Corporativo",en:"Corporate Portal"},loc:{es:"Empresa de servicios",en:"Services company"},d:{es:"Sitio institucional multi-idioma con gestor de contenido y foco en conversión, veloz y accesible.",en:"Multilingual corporate site with a content manager and a conversion focus —fast and accessible."}},
   {grp:"web",kind:"web",cls:"",live:"proyectos/gym-titan/",preview:"proyectos/gym-titan/thumb.jpg",cat:{es:"Sitio Web · Fitness",en:"Website · Fitness"},t:{es:"Titán Gym",en:"Titán Gym"},loc:{es:"Gimnasio · Costa Rica",en:"Gym · Costa Rica"},d:{es:"Landing para un gimnasio: clases, planes de membresía y prueba gratis. Concepto de demostración. Ábrelo para navegarlo en vivo.",en:"Landing for a gym: classes, membership plans and free trial. Demo concept. Open it to browse live."}},
   {grp:"web",kind:"web",cls:"",live:"proyectos/nails-studio/",preview:"proyectos/nails-studio/thumb.jpg",cat:{es:"Sitio Web · Belleza",en:"Website · Beauty"},t:{es:"Lila Nail Studio",en:"Lila Nail Studio"},loc:{es:"Estudio de uñas · Costa Rica",en:"Nail studio · Costa Rica"},d:{es:"Sitio para un estudio de uñas de autor: servicios, precios y galería. Concepto de demostración. Ábrelo para navegarlo en vivo.",en:"Site for an artisan nail studio: services, pricing and gallery. Demo concept. Open it to browse live."}},
   {grp:"web",kind:"web",cls:"",live:"proyectos/lavacar-premium/",preview:"proyectos/lavacar-premium/thumb.jpg",cat:{es:"Sitio Web · Autos",en:"Website · Auto"},t:{es:"AquaLux Auto Spa",en:"AquaLux Auto Spa"},loc:{es:"Lavado & detailing · Costa Rica",en:"Car wash & detailing · Costa Rica"},d:{es:"Landing para un lavacar premium: paquetes de lavado, detailing y reservas. Concepto de demostración. Ábrelo para navegarlo en vivo.",en:"Landing for a premium car wash: wash packages, detailing and booking. Demo concept. Open it to browse live."}},
-  {grp:"web",kind:"web",cls:"",live:"proyectos/taller-autos/",preview:"proyectos/taller-autos/thumb.jpg",cat:{es:"Sitio Web · Taller",en:"Website · Auto shop"},t:{es:"MotorTech Taller",en:"MotorTech Taller"},loc:{es:"Mecánica automotriz · Costa Rica",en:"Auto repair · Costa Rica"},d:{es:"Sitio para un taller de autos: servicios, proceso y agenda de citas. Concepto de demostración. Ábrelo para navegarlo en vivo.",en:"Site for an auto repair shop: services, process and appointment booking. Demo concept. Open it to browse live."}},
-  // --- DASH / SISTEMAS ---
-  {grp:"dash",kind:"dash",feat:true,yr:"2026",cat:{es:"Dashboard · Contabilidad",en:"Dashboard · Accounting"},t:{es:"Panel Financiero",en:"Financial Console"},loc:{es:"Dirección general",en:"Executive team"},d:{es:"Consola en tiempo real de flujo de caja, cuentas por cobrar y rentabilidad, pensada para decisiones de dirección.",en:"Real-time console for cash flow, receivables and profitability, built for executive decision-making."}},
-  {grp:"dash",kind:"sys",feat:true,yr:"2025",cat:{es:"Sistema · Operaciones",en:"System · Operations"},t:{es:"Sistema de Operaciones",en:"Operations System"},loc:{es:"Logística & inventario",en:"Logistics & inventory"},d:{es:"Panel interno para gestión de órdenes, inventario y equipos, con roles y reportería integrada.",en:"Internal panel for orders, inventory and teams, with roles and built-in reporting."}},
-  {grp:"dash",kind:"dash",cls:"wide",cat:{es:"Dashboard",en:"Dashboard"},t:{es:"Métricas de Ventas",en:"Sales Metrics"},loc:{es:"Retail",en:"Retail"},d:{es:"Tablero de ventas por región, producto y periodo, con alertas y exportación.",en:"Sales board by region, product and period, with alerts and export."}},
-  {grp:"dash",kind:"dash",cls:"",cat:{es:"Dashboard",en:"Dashboard"},t:{es:"Panel de RRHH",en:"HR Panel"},loc:{es:"Servicios",en:"Services"},d:{es:"Nómina, asistencia e indicadores de personal en un solo lugar.",en:"Payroll, attendance and staff KPIs in one place."}},
-  {grp:"dash",kind:"dash",cls:"",cat:{es:"Finanzas",en:"Finance"},t:{es:"Flujo de Caja",en:"Cash Flow"},loc:{es:"Finanzas",en:"Finance"},d:{es:"Proyección y seguimiento de flujo de caja con escenarios.",en:"Cash flow projection and tracking with scenarios."}},
-  {grp:"dash",kind:"sys",cls:"",cat:{es:"Sistema",en:"System"},t:{es:"Gestor de Órdenes",en:"Order Manager"},loc:{es:"Logística",en:"Logistics"},d:{es:"Flujo completo de órdenes con estados, roles y trazabilidad.",en:"End-to-end order flow with statuses, roles and traceability."}}
+  {grp:"web",kind:"web",cls:"",live:"proyectos/taller-autos/",preview:"proyectos/taller-autos/thumb.jpg",cat:{es:"Sitio Web · Taller",en:"Website · Auto shop"},t:{es:"MotorTech Taller",en:"MotorTech Taller"},loc:{es:"Mecánica automotriz · Costa Rica",en:"Auto repair · Costa Rica"},d:{es:"Sitio para un taller de autos: servicios, proceso y agenda de citas. Concepto de demostración. Ábrelo para navegarlo en vivo.",en:"Site for an auto repair shop: services, process and appointment booking. Demo concept. Open it to browse live."}}
+  // --- DASH / SISTEMAS ---  (próximamente: aún no hay proyectos de dashboards publicados)
 ];
 
 /* Escenas SVG tonales (paleta azul/cian) */
@@ -961,11 +967,10 @@ function render(){
   }).join("");
 
   // Web
-  $("#web-cases").innerHTML=PROJECTS.filter(p=>p.grp==="web"&&p.feat).map((p,i)=>caseHTML(p,i,"lk.web")).join("");
+  const wc=$("#web-cases");
+  wc.innerHTML=PROJECTS.filter(p=>p.grp==="web"&&p.feat).map((p,i)=>caseHTML(p,i,"lk.web")).join("");
+  if(!wc.innerHTML.trim())wc.closest(".pad").style.display="none"; // sin destacados: ocultar la banda
   $("#web-grid").innerHTML=PROJECTS.filter(p=>p.grp==="web"&&!p.feat).map(cardHTML).join("");
-  // Dash
-  $("#dash-cases").innerHTML=PROJECTS.filter(p=>p.grp==="dash"&&p.feat).map((p,i)=>caseHTML(p,i,"lk.dash")).join("");
-  $("#dash-grid").innerHTML=PROJECTS.filter(p=>p.grp==="dash"&&!p.feat).map(cardHTML).join("");
 
   observeReveals();
   bindGallery();
