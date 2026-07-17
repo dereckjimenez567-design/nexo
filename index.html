@@ -358,7 +358,9 @@ header.solid .burger span{background:var(--brand)}
 .cinfo .row{display:flex;gap:18px;padding:22px 0;border-top:1px solid var(--line);align-items:baseline}
 .cinfo .row:last-of-type{border-bottom:1px solid var(--line)}
 .cinfo .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);width:120px;flex:none}
-.cinfo .v{color:var(--body);font-weight:300}
+.cinfo .v{color:var(--body);font-weight:300;word-break:break-word}
+.cinfo .v a{color:inherit;border-bottom:1px solid var(--line);transition:.2s}
+.cinfo .v a:hover{color:var(--accent);border-color:var(--accent)}
 .cinfo .ph-note{margin-top:18px;font-size:.72rem;color:var(--muted);font-style:italic}
 .form label{display:block;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);margin:22px 0 8px}
 .form input,.form textarea{width:100%;border:0;border-bottom:1px solid var(--line);background:transparent;padding:11px 2px;font:inherit;color:var(--ink);transition:border-color .4s}
@@ -671,11 +673,11 @@ footer{background:var(--night);color:rgba(243,242,250,.72);padding:90px 0 34px}
     <div class="wrap">
       <div class="contact-in">
         <div class="cinfo reveal">
-          <div class="row"><span class="k" data-i18n="ct.email">Email</span><span class="v">hola@nexo.com</span></div>
-          <div class="row"><span class="k" data-i18n="ct.phone">Teléfono</span><span class="v">+1 (809) 000-0000</span></div>
-          <div class="row"><span class="k" data-i18n="ct.loc">Ubicación</span><span class="v">Santo Domingo, Rep. Dom.</span></div>
-          <div class="row"><span class="k" data-i18n="ct.social">Redes</span><span class="v">@nexo.estudio</span></div>
-          <p class="ph-note" data-i18n="ct.note">◦ Datos de contacto de ejemplo — reemplázalos por los reales.</p>
+          <div class="row"><span class="k" data-i18n="ct.email">Email</span><span class="v"><a href="mailto:dereckjimenez567@gmail.com">dereckjimenez567@gmail.com</a></span></div>
+          <div class="row"><span class="k" data-i18n="ct.phone">Teléfono</span><span class="v"><a href="tel:+50670522043">+506 7052-2043</a></span></div>
+          <div class="row"><span class="k" data-i18n="ct.wa">WhatsApp</span><span class="v"><a href="https://wa.me/50670522043" target="_blank" rel="noopener">+506 7052-2043</a></span></div>
+          <div class="row"><span class="k" data-i18n="ct.loc">Ubicación</span><span class="v">Costa Rica</span></div>
+          <p class="ph-note" data-i18n="ct.note">◦ Correo temporal mientras habilitamos el correo empresarial.</p>
         </div>
         <form class="form reveal d1" id="cform" novalidate>
           <label for="f-name" data-i18n="ct.f1">Nombre</label>
@@ -727,9 +729,9 @@ footer{background:var(--night);color:rgba(243,242,250,.72);padding:90px 0 34px}
       <div>
         <h4 data-i18n="foot.h3">Contacto</h4>
         <ul>
-          <li>hola@nexo.com</li>
-          <li>+1 (809) 000-0000</li>
-          <li>Santo Domingo, R.D.</li>
+          <li><a href="mailto:dereckjimenez567@gmail.com">dereckjimenez567@gmail.com</a></li>
+          <li><a href="https://wa.me/50670522043" target="_blank" rel="noopener">+506 7052-2043</a></li>
+          <li>Costa Rica</li>
         </ul>
       </div>
     </div>
@@ -783,8 +785,8 @@ const I18N = {
     "team.label":"Nosotros","team.title":"Nuestro equipo","team.sub":"Un equipo pequeño y capacitado que combina diseño, desarrollo y conocimiento contable. (Nombres y fotos de ejemplo — reemplázalos por tu equipo real.)",
     "quote.text":"“Creemos que la tecnología solo vale si tu equipo la entiende y la usa cada día. Por eso diseñamos herramientas claras, no complejas.”","quote.who":"Nexo · Nuestra promesa",
     "ct.label":"Contacto","ct.title":"Hablemos.","ct.sub":"Escríbenos con una idea, un problema o un objetivo. Respondemos con una propuesta clara.",
-    "ct.email":"Email","ct.phone":"Teléfono","ct.loc":"Ubicación","ct.social":"Redes",
-    "ct.note":"◦ Datos de contacto de ejemplo — reemplázalos por los reales.",
+    "ct.email":"Email","ct.phone":"Teléfono","ct.wa":"WhatsApp","ct.loc":"Ubicación","ct.social":"Redes",
+    "ct.note":"◦ Correo temporal mientras habilitamos el correo empresarial.",
     "ct.f1":"Nombre","ct.f2":"Email","ct.f3":"Empresa","ct.f4":"Cuéntanos sobre tu proyecto","ct.send":"Enviar mensaje",
     "ct.ok":"Gracias. Hemos recibido tu mensaje (demo) — conecta este formulario a tu email o CRM para producción.",
     "foot.cta":"¿Listos para construir el <span class=\"grad\">nexo</span>?","foot.btn":"Empecemos",
@@ -816,8 +818,8 @@ const I18N = {
     "team.label":"About","team.title":"Our team","team.sub":"A small, capable team blending design, development and accounting know-how. (Sample names and photos — replace with your real team.)",
     "quote.text":"“We believe technology is only worth it if your team understands and uses it every day. That's why we design tools that are clear, not complex.”","quote.who":"Nexo · Our promise",
     "ct.label":"Contact","ct.title":"Let's talk.","ct.sub":"Write to us with an idea, a problem or a goal. We reply with a clear proposal.",
-    "ct.email":"Email","ct.phone":"Phone","ct.loc":"Location","ct.social":"Social",
-    "ct.note":"◦ Sample contact details — replace with the real ones.",
+    "ct.email":"Email","ct.phone":"Phone","ct.wa":"WhatsApp","ct.loc":"Location","ct.social":"Social",
+    "ct.note":"◦ Temporary email while we set up the business address.",
     "ct.f1":"Name","ct.f2":"Email","ct.f3":"Company","ct.f4":"Tell us about your project","ct.send":"Send message",
     "ct.ok":"Thank you. We received your message (demo) — connect this form to your email or CRM for production.",
     "foot.cta":"Ready to build the <span class=\"grad\">connection</span>?","foot.btn":"Let's start",
