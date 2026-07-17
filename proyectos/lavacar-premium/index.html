@@ -456,8 +456,7 @@
      box-shadow:var(--shadow);border:1px solid var(--card-brd);cursor:ew-resize;user-select:none;touch-action:none;--pos:50%}
   .ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
   .ba-before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos)) 0 0)}
-  .ba-before img{filter:saturate(.28) brightness(.68) contrast(.92)}
-  .ba-before::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(74,58,36,.4),rgba(38,44,54,.34))}
+  .ba-before img{filter:none}
   .ba-tag{position:absolute;top:16px;padding:6px 14px;border-radius:20px;font-size:.7rem;font-weight:700;letter-spacing:.09em;
      text-transform:uppercase;background:rgba(4,18,31,.72);color:#fff;backdrop-filter:blur(4px);z-index:3}
   .ba-tag-a{left:16px}.ba-tag-b{right:16px;background:var(--grad-aqua);color:#04121f}
@@ -485,8 +484,8 @@
       <p>Arrastrá el control para ver la transformación —del polvo del camino al brillo de exhibición.</p>
     </div>
     <div class="ba reveal" id="ba" aria-label="Comparación antes y después">
-      <img class="ba-after" src="img/slider-car.jpg" alt="Auto después del lavado, limpio y brillante">
-      <div class="ba-before"><img src="img/slider-car.jpg" alt="Auto antes del lavado"></div>
+      <img class="ba-after" src="img/slider-after.jpg" alt="Auto después del lavado, limpio y brillante">
+      <div class="ba-before"><img src="img/slider-before.jpg" alt="Auto antes del lavado, opaco y sucio"></div>
       <span class="ba-tag ba-tag-a">Antes</span>
       <span class="ba-tag ba-tag-b">Después</span>
       <div class="ba-handle"><span class="ba-line"></span><span class="ba-grip">⇆</span></div>
