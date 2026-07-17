@@ -126,7 +126,7 @@
     position:absolute;background:var(--card);border:1px solid var(--line);border-radius:12px;
     padding:12px 16px;box-shadow:var(--shadow);display:flex;align-items:center;gap:11px;z-index:5;
   }
-  .badge-float .bi{width:38px;height:38px;border-radius:9px;background:rgba(255,106,0,.14);display:grid;place-items:center;font-size:19px;flex:0 0 38px}
+  .badge-float .bi{width:38px;height:38px;border-radius:9px;background:rgba(255,106,0,.14);display:grid;place-items:center;font-size:19px;flex:0 0 38px;color:var(--accent)}
   .badge-float b{font-family:'Barlow Condensed',sans-serif;font-size:17px;display:block;line-height:1}
   .badge-float small{color:var(--muted);font-size:12px}
   .badge-1{top:14px;left:-6px;animation:float 5.5s ease-in-out infinite}
@@ -150,7 +150,7 @@
   .card::after{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--accent);transition:width .3s ease}
   .card:hover{transform:translateY(-8px);border-color:rgba(255,106,0,.35);box-shadow:var(--shadow)}
   .card:hover::after{width:100%}
-  .card .ico{width:56px;height:56px;border-radius:12px;background:rgba(255,106,0,.12);border:1px solid rgba(255,106,0,.25);display:grid;place-items:center;font-size:26px;margin-bottom:18px}
+  .card .ico{width:56px;height:56px;border-radius:12px;background:rgba(255,106,0,.12);border:1px solid rgba(255,106,0,.25);display:grid;place-items:center;font-size:26px;margin-bottom:18px;color:var(--accent)}
   .card h3{font-size:24px;font-weight:700;margin-bottom:9px}
   .card p{color:var(--muted);font-size:15px}
 
@@ -305,11 +305,11 @@
 
     <div class="hero-visual" aria-hidden="true">
       <div class="badge-float badge-1">
-        <span class="bi">🛡️</span>
+        <span class="bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
         <span><b>Garantía escrita</b><small>Hasta 12 meses</small></span>
       </div>
       <div class="badge-float badge-2">
-        <span class="bi">⚙️</span>
+        <span class="bi"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
         <span><b>Scanner OBD-II</b><small>Diagnóstico preciso</small></span>
       </div>
       <svg viewBox="0 0 460 460" width="100%" style="max-width:460px">
@@ -371,12 +371,12 @@
       <p>Atendemos todas las marcas y modelos con equipo de última generación y técnicos certificados. Un solo taller para todo lo que tu carro necesita.</p>
     </div>
     <div class="grid-3">
-      <div class="card reveal"><div class="ico">🖥️</div><h3>Diagnóstico computarizado</h3><p>Escaneo OBD-II completo para detectar fallas del motor, sensores y sistemas electrónicos con precisión antes de reparar.</p></div>
-      <div class="card reveal"><div class="ico">🔧</div><h3>Mecánica general</h3><p>Motor, transmisión, correa de tiempo, embrague y afinamiento. Mantenimiento preventivo y correctivo para todas las marcas.</p></div>
-      <div class="card reveal"><div class="ico">🛑</div><h3>Frenos</h3><p>Cambio de pastillas, discos, rectificado y purga de líquido. Revisión completa del sistema para tu seguridad en carretera.</p></div>
-      <div class="card reveal"><div class="ico">🚗</div><h3>Suspensión y dirección</h3><p>Amortiguadores, rótulas, terminales y alineación. Recupera la estabilidad y el confort de manejo de tu vehículo.</p></div>
-      <div class="card reveal"><div class="ico">🛢️</div><h3>Cambio de aceite</h3><p>Aceite sintético y semisintético de marcas líderes, con cambio de filtros y revisión de niveles incluida en cada servicio.</p></div>
-      <div class="card reveal"><div class="ico">⚡</div><h3>Sistema eléctrico</h3><p>Alternador, batería, arranque, luces y cableado. Diagnóstico y reparación de fallas eléctricas con garantía.</p></div>
+      <div class="card reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M6 7h6M6 10.5h4"/></svg></div><h3>Diagnóstico computarizado</h3><p>Escaneo OBD-II completo para detectar fallas del motor, sensores y sistemas electrónicos con precisión antes de reparar.</p></div>
+      <div class="card reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h3>Mecánica general</h3><p>Motor, transmisión, correa de tiempo, embrague y afinamiento. Mantenimiento preventivo y correctivo para todas las marcas.</p></div>
+      <div class="card reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6.05 6.05l1.55 1.55M16.4 16.4l1.55 1.55M17.95 6.05l-1.55 1.55M7.6 16.4l-1.55 1.55"/></svg></div><h3>Frenos</h3><p>Cambio de pastillas, discos, rectificado y purga de líquido. Revisión completa del sistema para tu seguridad en carretera.</p></div>
+      <div class="card reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9-1.8-.5-4.5-1.1-4.5-1.1s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9C2 11.1 2 11.5 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></svg></div><h3>Suspensión y dirección</h3><p>Amortiguadores, rótulas, terminales y alineación. Recupera la estabilidad y el confort de manejo de tu vehículo.</p></div>
+      <div class="card reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></svg></div><h3>Cambio de aceite</h3><p>Aceite sintético y semisintético de marcas líderes, con cambio de filtros y revisión de niveles incluida en cada servicio.</p></div>
+      <div class="card reveal"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:block" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3>Sistema eléctrico</h3><p>Alternador, batería, arranque, luces y cableado. Diagnóstico y reparación de fallas eléctricas con garantía.</p></div>
     </div>
   </div>
 </section>
@@ -431,7 +431,7 @@
       </div>
       <div style="display:flex;gap:14px;flex-wrap:wrap">
         <a href="#contacto" class="btn btn-dark">Agendar cita</a>
-        <a href="tel:+50622891045" class="btn btn-ghost" style="border-color:rgba(0,0,0,.35);color:#111">📞 2289-1045</a>
+        <a href="tel:+50622891045" class="btn btn-ghost" style="border-color:rgba(0,0,0,.35);color:#111"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> 2289-1045</a>
       </div>
     </div>
   </div>
@@ -486,7 +486,7 @@
     </div>
     <div class="foot-bottom">
       <span>© 2026 MotorTech · Taller Automotriz S.A. — Cédula jurídica 3-101-XXXXXX. Todos los derechos reservados.</span>
-      <span>Hecho en Costa Rica 🇨🇷 · Sitio de demostración ficticio</span>
+      <span>Hecho en Costa Rica · Sitio de demostración ficticio</span>
     </div>
   </div>
 </footer>
